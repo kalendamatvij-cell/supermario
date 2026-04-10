@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Супер Маріо 2D</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: linear-gradient(135deg, #5c94fc 0%, #1e5799 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+        #gameContainer {
+            position: relative;
+        }
+        canvas {
+            display: block;
+            border: 4px solid #000;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+        #ui {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 2px 2px 0 #000;
+            pointer-events: none;
+        }
+        #gameOver {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            display: none;
+        }
+        #gameOver h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        #gameOver button {
+            font-size: 24px;
+            padding: 15px 30px;
+            background: #e52521;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #gameOver button:hover {
+            background: #ff3333;
+        }
+        #startScreen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0,0,0,0.9);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        #startScreen h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #e52521;
+        }
+        #startScreen button {
+            font-size: 24px;
+            padding: 15px 30px;
+            background: #e52521;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        #startScreen button:hover {
+            background: #ff3333;
+        }
+        .controls {
+            margin-top: 20px;
+            font-size: 16px;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <canvas id="game" width="800" height="600"></canvas>
+        <div id="ui">
+            <div>Очки: <span id="score">0</span></div>
+            <div>Монети: <span id="coins">0</span></div>
+            <div>Життя: <span id="lives">3</span></div>
+            <div>Рівень: <span id="level">1</span> / <span id="maxLevel">10</span></div>
+        </div>
+        <div id="startScreen">
+            <h1>🍄 Супер Маріо 2D 🍄</h1>
+            <button id="startBtn">▶️ Почати гру</button>
+            <div class="controls">
+                <p>⬅️➡️ - Рух</p>
+                <p>⬆️ або Space - Стрибок</p>
+                <p>Shift - Прискорення</p>
+            </div>
+        </div>
+        <div id="gameOver">
+            <h1 id="gameOverText">Гра закінчена!</h1>
+            <p>Очки: <span id="finalScore">0</span></p>
+            <button id="restartBtn">🔄 Грати знову</button>
+        </div>
+    </div>
+
+<script src="game.js"></script>
+</body>
+</html>
