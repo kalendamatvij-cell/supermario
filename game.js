@@ -1,6 +1,29 @@
 const canvas = document.getElementById('game');
 const ctx = canvas.getContext('2d');
 
+// Resize canvas for mobile devices
+function resizeCanvas() {
+    if (window.innerWidth <= 768) {
+        const aspectRatio = 800 / 600;
+        const maxWidth = window.innerWidth - 40;
+        const maxHeight = window.innerHeight - 200;
+        
+        let newWidth = maxWidth;
+        let newHeight = newWidth / aspectRatio;
+        
+        if (newHeight > maxHeight) {
+            newHeight = maxHeight;
+            newWidth = newHeight * aspectRatio;
+        }
+        
+        canvas.style.width = newWidth + 'px';
+        canvas.style.height = newHeight + 'px';
+    }
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
 const GRAVITY = 0.4;
 const JUMP_FORCE = -10;
 const MOVE_SPEED = 1.5;
